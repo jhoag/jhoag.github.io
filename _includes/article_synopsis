@@ -1,0 +1,16 @@
+<article class="article-synopsis">
+    <header>
+        <h1 class="synopsis-title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h1>             
+        <span class="publishing-date">Published: {% include date_tag date=include.post.date pattern="%Y/%m/%d" %}</span>
+        
+    </header>
+    <section class="synopsis">
+        {{ include.post.synopsis }}
+    </section>
+    <section class="categories">
+        Categories: 
+        {% for category in include.post.categories %}
+            {{ category }}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+    </section>
+</article>

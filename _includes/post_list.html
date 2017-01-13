@@ -1,0 +1,12 @@
+<section>
+    <h1>Latest Posts</h1>
+
+    <ul class="article-list">
+        {% for post in site.posts limit: 5 %}
+            <li>
+                {% include article_synopsis post=post %}
+            </li>
+        {% endfor %}
+    </ul>
+
+</section>

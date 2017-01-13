@@ -1,0 +1,153 @@
+---
+---
+
+$small-width: 800px;
+
+@mixin small {
+  @media (max-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+    @media (min-width: #{$small-width}) {
+        @content;
+    }
+}
+
+body{
+    margin:0;
+    line-height:150%;
+}
+
+@mixin small-header {
+    margin:0;
+    padding: 0 10% 0 10%;
+    height:40px;
+    font-size:0.5em;
+}
+
+.page-header {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position:fixed;
+    top:0;
+
+    background-color: white;
+    border-bottom:1px grey solid;
+    
+    width:80%;
+
+    h1 a {
+        color:#000000;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline overline;
+        }
+    }
+
+    @include large {
+        height:80px;
+        margin:0 10% 0 10%;       
+        padding:0;
+
+        transition: margin 0.5s, padding 0.5s, height 0.5s, font-size 0.5s;
+
+        .scrolled & {
+          @include small-header
+        }
+    }
+
+    @include small {
+        @include small-header
+    }
+}
+
+.page-header-bar {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+
+    .twitter-button {
+        line-height: 0;
+
+        @include large {
+           display:none;
+        }
+    }
+}
+
+.page-container {
+    display:flex;
+    flex-direction: row;
+    width:80%;
+    align-items: stretch;
+
+    @include large {
+        margin:100px auto 0px auto;
+    }
+
+    @include small {
+        margin: 60px auto 0px auto;
+    }
+    
+}
+
+.page-content {
+    flex-grow:1;
+    flex-wrap:no-wrap;
+    margin-left:60px;
+
+    @include small {
+        margin-left:0;
+    }
+}
+
+.page-sidebar {
+    flex-grow:0;
+
+    @include small {
+        display:none;
+    }
+}
+
+.about-header {
+    * {
+        margin:0;
+    }
+
+    h1 {
+
+    }
+    h2 {
+        color:#999999;
+    }
+
+}
+
+.article-list {
+    list-style-type: none;
+    padding:0;
+}
+
+.synopsis-title {
+    margin:0;
+}
+
+.synopsis {
+    padding:5px;
+    text-indent: 5px;
+}
+
+.article-synopsis {
+    margin:10px;
+}
+
+.publishing-date {
+    font-size:0.8em;
+}
